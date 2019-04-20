@@ -24,7 +24,7 @@ $$\boldsymbol{f}=(f(x_1), f(x_2),\cdots,f(x_n))^{\mathrm{T}},$$
 
 $$
 \boldsymbol{K}=
-\begin{pmaxtrix}
+\begin{pmatrix}
 K(x_1,s_1) & K(x_1,s_2) & \cdots K(x_1,s_m)\\
 K(x_2,s_1) & K(x_2,s_2) & \cdots K(x_2,s_m)\\
 \vdots & \vdots & \ddots & \vdots \\
