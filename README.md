@@ -23,6 +23,7 @@ where
 $$\boldsymbol{f}=(f(x_1), f(x_2),\cdots,f(x_n))^{\mathrm{T}},$$
 
 $$
+\begin{equation}
 \boldsymbol{K}=
 \begin{pmatrix}
 K(x_1,s_1) & K(x_1,s_2) & \cdots K(x_1,s_m)\\
@@ -30,6 +31,7 @@ K(x_2,s_1) & K(x_2,s_2) & \cdots K(x_2,s_m)\\
 \vdots & \vdots & \ddots & \vdots \\
 K(x_n,s_1) & K(x_n,s_2) & \cdots K(x_n,s_m)
 \end{pmatrix}
+\end{equation}
 $$
 
 
