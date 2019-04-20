@@ -14,7 +14,22 @@ Here we describe a discretization-based method to solve the Fredholm integral eq
 
 $$f(x_i)=\sum_j \Delta_s K(x_i, s_j) p(s_j)$$
 
-where $\Delta_s$ is the grid size along the dimension $s$ and $x_i$, $s_j$ are the grid points and $i$ and $j$ indicate their indices. When grid size $\Delta_s\to0$, the summation converges to the true integral. It is more convenient to write it in the matrix form,
+where $\Delta_s$ is the grid size along the dimension $s$ and $x_i$, $s_j$ are the grid points with $i$ and $j$ indicating their indices. When grid size $\Delta_s\to0$, the summation converges to the true integral. It is more convenient to write it in the matrix form,
 
 $$\boldsymbol{f} = \Delta_s \boldsymbol{K} \boldsymbol{p}$$
+
+where
+
+$$\boldsymbol{f}=(f(x_1), f(x_2),\cdots,f(x_n))^{\mathrm{T}},$$
+
+$$
+\boldsymbol{K}=
+\begin{pmaxtrix}
+K(x_1,s_1) & K(x_1,s_2) & \cdots K(x_1,s_m)\\
+K(x_2,s_1) & K(x_2,s_2) & \cdots K(x_2,s_m)\\
+\vdots & \vdots & \ddots & \vdots \\
+K(x_n,s_1) & K(x_n,s_2) & \cdots K(x_n,s_m)
+\end{pmatrix}
+$$
+
 
