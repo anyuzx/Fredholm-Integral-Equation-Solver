@@ -10,6 +10,10 @@ The problem is to find $p(s)$, given that $f(x)$ and $K(x,s)$ are known. This eq
 
 # Discretization-based Method
 
-Here we describe a discretization-based method to solve the Fredholm integral equation. The integral equation is replaced by a summation approximately,
+Here we describe a discretization-based method to solve the Fredholm integral equation. The integral equation is approximately replaced by a summation over grids,
 
-$$f(\boldsymbol{x})$$
+$$f(x_i)=\sum_j \Delta_s K(x_i, s_j) p(s_j)$$
+
+where $x_i$, $s_j$ are the grid points and $i$ and $j$ indicate their indices. It is more convenient to write it in the matrix form,
+
+$$\boldsymbol{f} = \boldsymbol{K} \boldsymbol{p}$$
