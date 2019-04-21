@@ -1,6 +1,6 @@
 This is a python module for solving [Fredholm integral equation of the first kind](https://en.wikipedia.org/wiki/Fredholm_integral_equation).
 
-# Background
+## Background
 
 A Fredholm integral equation of the first kind is written as,
 
@@ -12,7 +12,7 @@ $$
 
 The problem is to find $p(s)$, given that $f(x)$ and $K(x,s)$ are known. This equation occurs quite often in many different areas. 
 
-# Discretization-based Method
+## Discretization-based Method
 
 Here we describe a discretization-based method to solve the Fredholm integral equation. The integral equation is approximately replaced by a Riemann summation over grids,
 
@@ -68,7 +68,7 @@ $$
 
 Note that this is actually a subset of Tikhonov regularization (also called Ridge regularization) with $\alpha$ being a constant. 
 
-# When $p(s)$ is a probability density function
+## When $p(s)$ is a probability density function
 In many cases, both $f(x)$ and $g(s)$ are probability density function (PDF), and $K(x,s)$ is a conditional PDF, equivalent to $K(x|s)$. Thus, there are two constraints on the solution $p(s)$, that is $p(s)\geq 0$ and $\int p(s)\mathrm{d}s = 1$. These two constraints translate to $p(s_i)\geq 0$ for any $s_i$ and $\Delta_s\sum_i p(s_i)=1$. Hence, we need to solve the Tikhonov regularization problem subject to these two constraints.
 
 In the following, I will show how to solve the Tikhonov regularization problem with both equality and inequality constraints. First, I will show that the Tikhonov regularization problem with non-negative constraint can be easily translated to a regular non-negative least square problem (NNLS) which can be solved using active set algorithm.
@@ -106,7 +106,7 @@ $$
 $$
 
 
-Now we add the equality constraint, $\Delta_s\sum_i p(s_i)=1$ or $\boldsymbol{1}\boldsymbol{p}=1/\Delta_s$ written in matrix form. My implementation of solving such problem follows the algorithm described in Haskell and Hanson [^1]. According to their method, the problem becomes another NNLS problem,
+Now we add the equality constraint, $\Delta_s\sum_i p(s_i)=1$ or $\boldsymbol{1}\boldsymbol{p}=1/\Delta_s$ written in matrix form. My implementation of solving such problem follows the algorithm described in Haskell and Hanson <sup>1</sup>. According to their method, the problem becomes another NNLS problem,
 
 $$
 \begin{equation}
@@ -116,9 +116,15 @@ $$
 
 The solution to the above equation converges to the true solution when $\epsilon\to0^+$. Now I have described the algorithm to solve the Fredholm equation of the first kind when $p(s)$ is a probability density function.
 
-# Examples
+## Examples
 
-[^1]: Haskell, Karen H., and Richard J. Hanson. "An algorithm for linear least squares problems with equality and nonnegativity constraints." Mathematical Programming 21.1 (1981): 98-118.
+* Compounding an exponential distribution with its rate parameter distributed according to a gamma distribution yields a Lomax distribution $f(x)=a(x+1)^{-(a+1)}$, supported on $(0,\infty)$, with $a>0$. $k(x,\theta)=\theta e^{-\theta x}$ is an exponential density and $p(\theta) = \Gamma(a)^{-1}\theta^{a-1}e^{-\theta}$ is a gamma density.
+
+* Compounding a Gaussian distribution with mean distributed according to another Gaussian distribution yields (again) a Gaussian distribution $f(x)=\mathcal{N}(a,b^2+\sigma^2)$. $k(x|\mu)=\mathcal{N}(\mu,\sigma^2)$ and $p(\mu)=\mathcal{N}(a,b^2)$
+
+* Compounding an exponential distribution with its rate parameter distributed according to a mixture distribution of two gamma distributions. Similar to the first example, we use $k(x,\theta)=\theta e^{-\theta x}$. But here we use $p(\theta)=q p(\theta|a_1)+(1-q)p(\theta|a_2)$ where $q$, $a_1$ and $a_2$ are parameters. It is clear that $p(\theta)$ is a mixture between two different gamma distributions such as it is a bimodal distribution. Following the first example, we have $f(x)=qf(x|a_1)+(1-q)f(x|a_2)$ where $f(x|a)=a(x+1)^{-(a+1)}$
+
+[1]: Haskell, Karen H., and Richard J. Hanson. "An algorithm for linear least squares problems with equality and nonnegativity constraints." Mathematical Programming 21.1 (1981): 98-118.
 
 
 
