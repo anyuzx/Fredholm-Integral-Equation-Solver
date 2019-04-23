@@ -1,7 +1,7 @@
 import numpy as np
 import scipy
 
-# core algorithm of non-negative equality Tikhonov regularization (NNETR)
+# core algorithm of non-negative Tikhonov regularization with equality constraint (NNETR)
 def NNETR(K, f, Delta, epsilon, alpha):
     # the first step
     A_nn = np.vstack((K, alpha * np.identity(K.shape[1])))
